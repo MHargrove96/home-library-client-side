@@ -1,0 +1,23 @@
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 500px;
+    padding-top: 25px;
+    row-gap: 25px;
+}
+
+.userNameTf{
+    color: black !important;
+}
+
+.passWordTf{
+    color: black !important;
+}
+
+.loginBtn{
+    background-color: #E0E0E0 !important;
+    color: black !important;
+    width: 100%;
+}

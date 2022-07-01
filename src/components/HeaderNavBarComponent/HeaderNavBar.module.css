@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+
+.appBar{
+    background-color: #521705 !important;
+    background-image: url("https://www.transparenttextures.com/patterns/large-leather.png");
+    display: flex !important;
+    flex-direction: row !important;
+    position: static !important;
+    
+}
+
+.navBarTitle{
+    font-family: 'Berkshire Swash', cursive !important;
+    text-shadow: 2px 3px black;
+    text-decoration: none;
+    color: azure;
+}
+
+.signUpBtn{
+    width: fit-content; 
+    justify-items: end;
+}
