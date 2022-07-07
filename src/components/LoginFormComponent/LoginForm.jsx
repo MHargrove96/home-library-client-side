@@ -5,8 +5,9 @@ import { Box, TextField, Button } from "@mui/material";
 import classes from "./LoginForm.module.css";
 const loginURL = "http://localhost:4001/auth";
 
-function LoginForm() {
+function LoginForm({setState}) {
   let navigate = useNavigate();
+
 
   const [body, setBody] = useState({
     user_name: "",
@@ -22,9 +23,9 @@ function LoginForm() {
     });
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     console.log("In the handle submit funtion");
-    fetch(loginURL, {
+    await fetch(loginURL, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -32,12 +33,12 @@ function LoginForm() {
       },
       body: JSON.stringify(body),
     }).then((res) => res.json()).then((data) => {
-      console.log(data)
+      setState(true)
       document.cookie = cookie.serialize('token', data, {
         maxAge: 60 * 60 * 24 * 7
       })
     });
-    navigate("/loggedin", { replace: true });
+    navigate("/dashboard", { replace: true });
     //have to imp a err catch still____________
   };
 

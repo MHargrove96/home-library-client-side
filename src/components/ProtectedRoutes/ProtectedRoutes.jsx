@@ -1,12 +1,17 @@
-// import React from "react";
-// import { Outlet, Navigate } from "react-router-dom";
+import React from "react";
+import { Navigate } from "react-router-dom";
+import cookie from 'cookie'
 
 
-// const ProtectedRoutes = () => {
-//     const { } = => {
-//         return ;
-//     }
+const ProtectedRoutes = ({component: Component}) => {
+   const checkAuth = () => {
+    const cookies = cookie.parse(document.cookie)
+    console.log(cookies)
+    return cookies.token ? true : false 
+   }
 
-//     return ?? ? <Outlet /> : <Navigate to="/login"
-// }
+    return  checkAuth() ? <Component /> : <Navigate to="/login" />
+}
+
+export default ProtectedRoutes
 

@@ -19,25 +19,26 @@ function OwnedBooks() {
       fetch(ownedBooksURL)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
-         setOwnedData(data)});
-          
+          console.log(data);
+          setOwnedData(data);
+        });
     }
   };
 
   useEffect(() => {
     fetch(ownedBooksURL)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data)
-         setOwnedData(data)})
-  }, [])
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setOwnedData(data);
+      });
+  }, []);
 
   return (
     <section className={classes.ownedFindBookContainer}>
       <div className="search">
-      <h1 className={classes.ownedH1Text}>This is my library!</h1>
-      <h2 className={classes.ownedSearchText}>Find a book</h2>
+        <h1 className={classes.ownedH1Text}>This is my library!</h1>
+        <h2 className={classes.ownedSearchText}>Find a book</h2>
         <input
           className={classes.ownedSearchInput}
           type="text"
@@ -48,9 +49,11 @@ function OwnedBooks() {
         />
       </div>
       <div className={classes.cardContainer}>
-        {ownedBookData.filter((books) => books.book_title.includes(search)).map((book) => {
-          return <UserBookCard key={book.ownedbook_id} book={book} />;
-        })}
+        {ownedBookData
+          .filter((books) => books.book_title.toLowerCase().startsWith(search.toLowerCase()))
+          .map((book) => {
+            return <UserBookCard key={book.ownedbook_id} book={book} />;
+          })}
       </div>
     </section>
   );
