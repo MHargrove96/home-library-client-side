@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import cookie from 'cookie'
+import { useNavigate } from "react-router-dom";
 import { Box, TextField, Button } from "@mui/material";
 import classes from "./LoginForm.module.css";
 const loginURL = "http://localhost:4001/auth";
 
 function LoginForm() {
+  let navigate = useNavigate();
+
   const [body, setBody] = useState({
     user_name: "",
     user_password: "",
@@ -34,6 +37,7 @@ function LoginForm() {
         maxAge: 60 * 60 * 24 * 7
       })
     });
+    navigate("/loggedin", { replace: true });
     //have to imp a err catch still____________
   };
 

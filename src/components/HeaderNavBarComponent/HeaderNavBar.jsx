@@ -1,30 +1,35 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import cookie from 'cookie'
 import classes from "./HeaderNavBar.module.css";
 
-import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
 
 
 export default function HeaderNavBar() {
+  let navigate = useNavigate();
+  const logoutHandler = () => {
+    document.cookie = cookie.serialize("token", null, {
+      maxAge: 0,
+    });
+    navigate("/", { replace: true });  
+  }
+
   return (
-    <Box className={classes.appBarBox} sx={{ flexGrow: 1 }}>
-      <AppBar className={classes.appBar}>
-        <Toolbar>
-          <Typography
-            className={classes.navBarTitle}
-            variant="h4"
-            component={Link}
-            to='/'
-          >
-            Book Nook
-          </Typography>
-        </Toolbar>
-        <p></p>
-        <Button className={classes.loginBtn} variant="text" color="inherit" component={Link} to='/login'>
-          Login
-        </Button>
-      </AppBar>
-    </Box>
+    <div  className={classes.appBar}>
+      <h4 className={classes.navBarTitle}>Book Nook</h4>
+      <Link to={'/login'}>
+      <button className={classes.loginBtn} >Login</button>
+      </Link>
+      <br />
+      <Link to='/'>
+      <button className={classes.homeBtn} >Home</button>
+      </Link>
+      <br />
+      <Link to={'/wishlist'}>
+      <button className={classes.wishListBtn} >Wish list</button>
+      </Link>
+      <br />
+      <button className={classes.logOutBtn} onClick={logoutHandler}>Logout</button>
+    </div>
   );
 }

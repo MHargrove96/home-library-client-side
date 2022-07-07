@@ -1,0 +1,62 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Helvetica; 
+    flex: 1 1 15em;
+    margin: 15px;
+    background-color: rgb(202, 202, 202);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    align-self: flex-end;
+    height: 350px;
+    align-items: center;
+ }
+ 
+ .imgBox{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 160px;
+ }
+ 
+ .coverImg{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    align-self: center;
+    min-width: 100%;
+    min-height: 100%;
+ }
+ 
+ .textBox{
+    width: 100%;
+    background-color: slategrey;
+ }
+ 
+ .titleTxt{
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+ }
+ 
+ .authorTxt{
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+ }
+ 
+ .btnBox{
+    background-color: slategrey;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+ }
+ 
+ .ownedBtn{
+ }
+ 
+ .wishListBtn{
+     
+ }

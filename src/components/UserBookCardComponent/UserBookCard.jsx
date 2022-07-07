@@ -1,15 +1,21 @@
 import React from "react";
 import cookie from "cookie";
 
-import classes from "./Card.module.css";
+import classes from "./UserBookCard.module.css";
 const addBookURl = "http://localhost:4001/mybooks";
 const wishlistURl = "http://localhost:4001/mywishlist";
 
-const Card = ({ book }) => {
+const UserBookCard = ({ book }) => {
   console.log(book);
 
-  let thumbnail =
-    book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
+  const {
+    ownedbook_id,
+    googlebook_id,
+    thumbNail,
+    book_title,
+    book_authors,
+    book_description
+  } = book
 
   const addToOwned = () => {
     const cookies = cookie.parse(document.cookie);
@@ -22,11 +28,11 @@ const Card = ({ book }) => {
         Authorization: `Bearer ${cookies.token}`,
       },
       body: JSON.stringify({
-        googlebook_id: book.id,
-        thumbNail: thumbnail,
-        book_title: book.volumeInfo.title,
-        book_authors: book.volumeInfo.authors,
-        book_description: book.volumeInfo.description,
+        googlebook_id: googlebook_id,
+        thumbNail: thumbNail,
+        book_title: book_title,
+        book_authors: book_authors,
+        book_description: book_description,
       }),
     });
   };
@@ -41,29 +47,31 @@ const Card = ({ book }) => {
         Authorization: `Bearer ${cookies.token}`,
       },
       body: JSON.stringify({
-        googlebook_id: book.id,
-        thumbNail: thumbnail,
-        book_title: book.volumeInfo.title,
-        book_authors: book.volumeInfo.authors,
-        book_description: book.volumeInfo.description,
+        googlebook_id: googlebook_id,
+        thumbNail: thumbNail,
+        book_title: book_title,
+        book_authors: book_authors,
+        book_description: book_description,
       }),
     });
   };
+
+  
 
   return (
     <>
       <div className={classes.card}>
         <div className={classes.imgBox}>
           <img
-            src={thumbnail}
-            alt={book.volumeInfo.title}
+            src={thumbNail}
+            alt={book_title}
             className={classes.coverImg}
           />
         </div>
         <div className={classes.textBox}>
-          <h3 className={classes.titleTxt}>{book.volumeInfo.title}</h3>
+          <h3 className={classes.titleTxt}>{book_title}</h3>
           <br />
-          <h4 className={classes.authorTxt}>By: {book.volumeInfo.authors}</h4>
+          <h4 className={classes.authorTxt}>By: {book_authors}</h4>
           <div className={classes.btnBox}>
             <button onClick={addToOwned} className={classes.ownedBtn}>
               Owned
@@ -78,4 +86,4 @@ const Card = ({ book }) => {
   );
 };
 
-export default Card;
+export default UserBookCard;

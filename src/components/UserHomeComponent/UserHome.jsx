@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import classes from "./UserHome.module.css";
 
 import Card from "../CardComponent/Card";
+import OwnedBooks from "../OwnedBooksComponent/OwnedBooks";
+
 
 function UserHome() {
   const [search, setSearch] = useState("");
   const [bookData, setData] = useState([]);
+  let location = useLocation();
 
   const searchBook = (evt) => {
-    if (evt.key === "Enter") {
+    if (evt.key === "Enter" && search.length <= 0) {
+      return alert("Please enter a title.");
+    }
+    if (evt.key === "Enter" && search.length > 0) {
       fetch(
         `https://www.googleapis.com/books/v1/volumes?q=` +
           search +
@@ -21,21 +28,22 @@ function UserHome() {
     }
   };
 
+ 
+
   return (
-    <>
+    <main className={classes.mainBox}>
       <section className={classes.findBookContainer}>
-        <div className={classes.h1TextContainer}>
-          <h1 className={classes.homeMainText}>
-            A room without books is like <br /> a body without a soul.
-          </h1>
-        </div>
+        <h1 className={classes.homeMainText}>
+          A room without books is like <br /> a body without a soul.
+        </h1>
+
         <div className={classes.h1TextContainer}>
           <h2 className={classes.homeSearchText}>Find a book</h2>
           <div className="search">
             <input
               className={classes.searchInput}
               type="text"
-              placeholder="Enter your book name"
+              placeholder="Search a Title."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               onKeyPress={searchBook}
@@ -45,12 +53,13 @@ function UserHome() {
 
         <div className={classes.cardContainer}>
           {bookData.map((book) => {
-            return <Card key={book.id} book={book}/>;
+            return <Card key={book.id} book={book} />;
           })}
         </div>
       </section>
-      <section></section>
-    </>
+      <OwnedBooks />
+      {/* if condition that will switch between the ownedbooks component and the wishlist component */}
+    </main>
   );
 }
 

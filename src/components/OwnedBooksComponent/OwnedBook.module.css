@@ -1,14 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
-.mainBox{
-    background-color: black;
-    display: flex;
-    
-    margin: 0%;
-    padding: 0%;
-}
 
-.findBookContainer{
+.ownedFindBookContainer{
     max-width: 50%;
     min-height: 100vh;
     margin-left: 160px;
@@ -19,7 +12,7 @@
     text-align: center;
 }
 
-.homeMainText{
+.ownedH1Text{
     font-family: 'Berkshire Swash', cursive !important;
     text-shadow: 1px 2px black;
     text-decoration: none;
@@ -30,9 +23,14 @@
     margin: 5px;
 }
 
-.h1TextContainer{
+.ownedSearchText{
     font-family: Helvetica; 
     color: whitesmoke;
+}
+
+.ownedSearchInput{
+    font-family: Helvetica; 
+    color: black;
 }
 
 .cardContainer{
@@ -42,4 +40,3 @@
     padding: 0px;
     margin: 0px;
 }
-

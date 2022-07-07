@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 import { Box, TextField, Button } from "@mui/material";
 import classes from "./UserSignUp.module.css";
 const addUserURL = "http://localhost:4001/user/usersignup";
 
 function UserSignUp() {
+  let navigate = useNavigate();
+
   const [body, setBody] = useState({
     first_name: "",
     last_name: "",
@@ -24,6 +28,7 @@ function UserSignUp() {
   };
 
   const handleSubmit = (evt) => {
+    evt.preventDefault()
     console.log("In the handle submit funtion");
     fetch(addUserURL, {
       method: "POST",
@@ -33,15 +38,27 @@ function UserSignUp() {
       },
       body: JSON.stringify(body),
     }).then(res => console.log(res));
+
+    navigate("/", { replace: true });
     //have to imp a err catch still____________
+
   };
+
+  function validateForm() {
+    return (
+      body.first_name.length > 0 &&
+      body.last_name.length > 0 &&
+      body.user_name.length > 0 &&
+      body.user_password.length > 8 &&
+      body.email.length > 0
+    )
+  }
 
   return (
     <Box
       className={classes.formContainer}
       component="form"
-      noValidate
-      autoComplete="off"
+      onSubmit={handleSubmit}
     >
       <TextField
         className={classes.firstNameTf}
@@ -65,7 +82,6 @@ function UserSignUp() {
       />
       <TextField
         className={classes.birthDateTf}
-        // label="Age"
         type="date"
         value={body.birthDate}
         name={"birthDate"}
@@ -104,9 +120,10 @@ function UserSignUp() {
         fullWidth
       />
       <Button
+      type="submit"
         className={classes.signUpBtn}
         variant="contained"
-        onClick={handleSubmit}
+        disabled={!validateForm()}
       >
         Sign Up
       </Button>
