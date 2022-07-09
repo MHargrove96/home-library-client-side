@@ -6,7 +6,6 @@ import cookie from 'cookie'
 const ProtectedRoutes = ({component: Component}) => {
    const checkAuth = () => {
     const cookies = cookie.parse(document.cookie)
-    console.log(cookies)
     return cookies.token ? true : false 
    }
 

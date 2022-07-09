@@ -22,7 +22,6 @@ function OwnedBooks({ addBookState, setBookState }) {
       fetch(ownedBooksURL)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setOwnedData(data);
         });
     }
@@ -39,7 +38,6 @@ function OwnedBooks({ addBookState, setBookState }) {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setOwnedData(data);
           setBookState(false);
         });

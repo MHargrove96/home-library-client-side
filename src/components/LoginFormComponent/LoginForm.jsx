@@ -15,7 +15,6 @@ function LoginForm({ setState }) {
 
   const handleChange = (evt) => {
     const { value, name } = evt.target;
-    console.log("handle change function!", "Name:", name, "value:", value);
     setBody({
       ...body,
       [name]: value,
@@ -23,7 +22,6 @@ function LoginForm({ setState }) {
   };
 
   const handleSubmit = async (evt) => {
-    console.log("In the handle submit funtion");
     await fetch(loginURL, {
       method: "POST",
       mode: "cors",

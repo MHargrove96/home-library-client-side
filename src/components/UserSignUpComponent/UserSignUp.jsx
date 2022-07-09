@@ -20,7 +20,6 @@ function UserSignUp({ setState }) {
 
   const handleChange = (evt) => {
     const { value, name } = evt.target;
-    console.log("handle change function!", "Name:", name, "value:", value);
     setBody({
       ...body,
       [name]: value,
@@ -29,7 +28,6 @@ function UserSignUp({ setState }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("In the handle submit funtion");
     fetch(addUserURL, {
       method: "POST",
       mode: "cors",
@@ -40,7 +38,6 @@ function UserSignUp({ setState }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         setState(true);
         document.cookie = cookie.serialize("token", data, {
           maxAge: 60 * 60 * 24 * 7,

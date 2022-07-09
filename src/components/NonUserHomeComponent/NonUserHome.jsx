@@ -4,7 +4,7 @@ import classes from "./NonUserHome.module.css";
 
 const serverURL = "https://librarybackend22.herokuapp.com/books";
 
-function NonUserHome({setState}) {
+function NonUserHome({ setState }) {
   const [books, setBooksData] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,6 @@ function NonUserHome({setState}) {
         <ul className={classes.ul}>
           {books.map((book) => (
             <li key={book.book_id} className={classes.list}>
-              {console.log(book)}
               <p className={classes.listItem}>Title: {book.title}</p>
               <p className={classes.listItem}>Summary: {book.summary}</p>
               <p className={classes.listItem}>Authored by {book.author}</p>
@@ -37,7 +36,7 @@ function NonUserHome({setState}) {
         <p className={classes.infoText}>
           Manage and update your personal library effeciently and with ease.
         </p>
-        <UserSignUp setState={setState}/>
+        <UserSignUp setState={setState} />
       </section>
     </div>
   );

@@ -12,7 +12,6 @@ function App() {
 
   useEffect(() => {
     const cookies = cookie.parse(document.cookie)
-    console.log(cookies)
     if(cookies.token ){
       setUser(true)
     }
@@ -20,11 +19,6 @@ function App() {
       setUser(false)
     }
   },[])
-
-  useEffect(() => {
-    console.log(user)
-  }, [])
-
 
   return (
     <BrowserRouter>

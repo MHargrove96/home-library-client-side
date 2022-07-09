@@ -52,7 +52,6 @@ function UserHome() {
 
         <div className={classes.cardContainer}>
           {bookData.map((book) => {
-            console.log('Add Book State', addBook)
             return <Card key={book.id} book={book} setBookState={setAddBook} />;
           })}
         </div>
