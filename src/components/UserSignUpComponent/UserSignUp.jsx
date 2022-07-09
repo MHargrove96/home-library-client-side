@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import cookie from 'cookie'
 
 import { Box, TextField, Button } from "@mui/material";
 import classes from "./UserSignUp.module.css";
 const addUserURL = "https://librarybackend22.herokuapp.com/user/usersignup";
 
-function UserSignUp() {
+function UserSignUp({ setState }) {
   let navigate = useNavigate();
 
   const [body, setBody] = useState({
@@ -36,9 +37,17 @@ function UserSignUp() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-    }).then((res) => console.log(res));
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setState(true);
+        document.cookie = cookie.serialize("token", data, {
+          maxAge: 60 * 60 * 24 * 7,
+        });
+        navigate("/dashboard", { replace: true });
+      });
 
-    navigate("/dashboard", { replace: true });
     //have to imp a err catch still____________
   };
 
