@@ -6,10 +6,11 @@ import classes from "./UserHome.module.css";
 import Card from "../CardComponent/Card";
 import OwnedBooks from "../OwnedBooksComponent/OwnedBooks";
 
-
 function UserHome() {
   const [search, setSearch] = useState("");
   const [bookData, setData] = useState([]);
+  const [addBook, setAddBook] = useState(false);
+
   let location = useLocation();
 
   const searchBook = (evt) => {
@@ -27,8 +28,6 @@ function UserHome() {
         .then((data) => setData(data.items));
     }
   };
-
- 
 
   return (
     <main className={classes.mainBox}>
@@ -53,11 +52,12 @@ function UserHome() {
 
         <div className={classes.cardContainer}>
           {bookData.map((book) => {
-            return <Card key={book.id} book={book} />;
+            console.log('Add Book State', addBook)
+            return <Card key={book.id} book={book} setBookState={setAddBook} />;
           })}
         </div>
       </section>
-      <OwnedBooks />
+      <OwnedBooks addBookState={addBook} setBookState={setAddBook} />
       {/* if condition that will switch between the ownedbooks component and the wishlist component */}
     </main>
   );

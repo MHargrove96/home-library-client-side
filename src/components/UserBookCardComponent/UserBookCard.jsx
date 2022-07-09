@@ -3,11 +3,9 @@ import cookie from "cookie";
 
 import classes from "./UserBookCard.module.css";
 const addBookURl = "https://librarybackend22.herokuapp.com/mybooks";
-const removeBookURL = "https://librarybackend22.herokuapp.com/mybooks/:id";
+const removeBookURL = "https://librarybackend22.herokuapp.com/mybooks";
 
-const UserBookCard = ({ book }) => {
-  console.log(book);
-
+const UserBookCard = ({ book, setBookState }) => {
   const {
     ownedbook_id,
     googlebook_id,
@@ -37,18 +35,18 @@ const UserBookCard = ({ book }) => {
     });
   };
 
-  const removeBook = () => {
+  const removeBook = async (id) => {
     const cookies = cookie.parse(document.cookie);
 
-    fetch(removeBookURL, {
+    await fetch(`${removeBookURL}/${id}`, {
       method: "DELETE",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${cookies.token}`,
       },
-      body: JSON.stringify({}),
     });
+    setBookState(true)
   };
 
   return (
@@ -62,7 +60,7 @@ const UserBookCard = ({ book }) => {
           <br />
           <h4 className={classes.authorTxt}>By: {book_authors}</h4>
           <div className={classes.btnBox}>
-            <button onClick={removeBook} className={classes.removeBookBtn}>
+            <button onClick={() => {removeBook(ownedbook_id)}} className={classes.removeBookBtn}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

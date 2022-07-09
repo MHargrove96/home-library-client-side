@@ -5,16 +5,14 @@ import classes from "./Card.module.css";
 const addBookURl = "https://librarybackend22.herokuapp.com/mybooks";
 const wishlistURl = "https://librarybackend22.herokuapp.com/mywishlist";
 
-const Card = ({ book }) => {
-  console.log(book);
-
+const Card = ({ book, setBookState }) => {
   let thumbnail =
     book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
 
-  const addToOwned = () => {
+  const addToOwned = async () => {
     const cookies = cookie.parse(document.cookie);
 
-    fetch(addBookURl, {
+    await fetch(addBookURl, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -29,6 +27,7 @@ const Card = ({ book }) => {
         book_description: book.volumeInfo.description,
       }),
     });
+    setBookState(true)
   };
 
   const addToWishList = () => {

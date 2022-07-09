@@ -6,9 +6,10 @@ import UserBookCard from "../UserBookCardComponent/UserBookCard";
 
 const ownedBooksURL = "https://librarybackend22.herokuapp.com/mybooks";
 
-function OwnedBooks() {
+function OwnedBooks({addBookState, setBookState}) {
   const [search, setSearch] = useState("");
   const [ownedBookData, setOwnedData] = useState([]);
+
   let location = useLocation();
 
   const searchOwned = (evt) => {
@@ -26,13 +27,17 @@ function OwnedBooks() {
   };
 
   useEffect(() => {
-    fetch(ownedBooksURL)
+    console.log('Add book state', addBookState)
+    if(ownedBookData.length === 0 || addBookState){
+      fetch(ownedBooksURL)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         setOwnedData(data);
+        setBookState(false)
       });
-  }, []);
+    }
+    }, [addBookState]);
 
   return (
     <section className={classes.ownedFindBookContainer}>
@@ -54,7 +59,7 @@ function OwnedBooks() {
             books.book_title.toLowerCase().startsWith(search.toLowerCase())
           )
           .map((book) => {
-            return <UserBookCard key={book.ownedbook_id} book={book} />;
+            return <UserBookCard key={book.ownedbook_id} book={book} setBookState={setBookState}/>;
           })}
       </div>
     </section>
