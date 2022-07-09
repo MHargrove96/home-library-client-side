@@ -2,8 +2,8 @@ import React from "react";
 import cookie from "cookie";
 
 import classes from "./Card.module.css";
-const addBookURl = "http://localhost:4001/mybooks";
-const wishlistURl = "http://localhost:4001/mywishlist";
+const addBookURl = "https://librarybackend22.herokuapp.com/mybooks";
+const wishlistURl = "https://librarybackend22.herokuapp.com/mywishlist";
 
 const Card = ({ book }) => {
   console.log(book);
@@ -68,9 +68,9 @@ const Card = ({ book }) => {
             <button onClick={addToOwned} className={classes.ownedBtn}>
               Owned
             </button>
-            <button onClick={addToWishList} className={classes.wishListBtn}>
+            {/* <button onClick={addToWishList} className={classes.wishListBtn}>
               <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgNC40MTljLTIuODI2LTUuNjk1LTExLjk5OS00LjA2NC0xMS45OTkgMy4yNyAwIDcuMjcgOS45MDMgMTAuOTM4IDExLjk5OSAxNS4zMTEgMi4wOTYtNC4zNzMgMTItOC4wNDEgMTItMTUuMzExIDAtNy4zMjctOS4xNy04Ljk3Mi0xMi0zLjI3eiIvPjwvc3ZnPg==" />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

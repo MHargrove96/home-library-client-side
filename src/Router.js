@@ -9,7 +9,7 @@ import UserHome from "./components/UserHomeComponent/UserHome";
 function Router({state, setState}) {
   return (
     <Routes>
-      <Route path="/welcome" element={<NonUserHome />} />
+      <Route path="/" element={<NonUserHome />} />
       <Route path="/login" element={<LoginForm setState={setState}/>} />
       <Route path="/dashboard" element={<ProtectedRoutes state={state} component={UserHome}/>} />
     </Routes>

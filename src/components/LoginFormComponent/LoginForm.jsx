@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import cookie from 'cookie'
+import cookie from "cookie";
 import { useNavigate } from "react-router-dom";
 import { Box, TextField, Button } from "@mui/material";
 import classes from "./LoginForm.module.css";
-const loginURL = "http://localhost:4001/auth";
+const loginURL = "https://librarybackend22.herokuapp.com/auth";
 
-function LoginForm({setState}) {
+function LoginForm({ setState }) {
   let navigate = useNavigate();
-
 
   const [body, setBody] = useState({
     user_name: "",
@@ -32,16 +31,17 @@ function LoginForm({setState}) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-    }).then((res) => res.json()).then((data) => {
-      setState(true)
-      document.cookie = cookie.serialize('token', data, {
-        maxAge: 60 * 60 * 24 * 7
-      })
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setState(true);
+        document.cookie = cookie.serialize("token", data, {
+          maxAge: 60 * 60 * 24 * 7,
+        });
+      });
     navigate("/dashboard", { replace: true });
     //have to imp a err catch still____________
   };
-
 
   return (
     <Box

@@ -11,7 +11,7 @@ export default function HeaderNavBar({ state, setState }) {
     document.cookie = cookie.serialize("token", null, {
       maxAge: 0,
     });
-    navigate("/welcome", { replace: true });
+    navigate("/", { replace: true });
   };
 
   return (

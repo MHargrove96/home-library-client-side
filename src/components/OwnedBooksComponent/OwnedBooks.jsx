@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import classes from "./OwnedBook.module.css";
 import UserBookCard from "../UserBookCardComponent/UserBookCard";
 
-const ownedBooksURL = "http://localhost:4001/mybooks";
+const ownedBooksURL = "https://librarybackend22.herokuapp.com/mybooks";
 
 function OwnedBooks() {
   const [search, setSearch] = useState("");
@@ -50,7 +50,9 @@ function OwnedBooks() {
       </div>
       <div className={classes.cardContainer}>
         {ownedBookData
-          .filter((books) => books.book_title.toLowerCase().startsWith(search.toLowerCase()))
+          .filter((books) =>
+            books.book_title.toLowerCase().startsWith(search.toLowerCase())
+          )
           .map((book) => {
             return <UserBookCard key={book.ownedbook_id} book={book} />;
           })}
