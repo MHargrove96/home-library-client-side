@@ -38,7 +38,7 @@ function UserSignUp() {
       body: JSON.stringify(body),
     }).then((res) => console.log(res));
 
-    navigate("/", { replace: true });
+    navigate("/dashboard", { replace: true });
     //have to imp a err catch still____________
   };
 

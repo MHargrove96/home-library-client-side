@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import cookie from "cookie";
+
 
 import classes from "./OwnedBook.module.css";
 import UserBookCard from "../UserBookCardComponent/UserBookCard";
 
 const ownedBooksURL = "https://librarybackend22.herokuapp.com/mybooks";
 
-function OwnedBooks({addBookState, setBookState}) {
+function OwnedBooks({ addBookState, setBookState }) {
   const [search, setSearch] = useState("");
   const [ownedBookData, setOwnedData] = useState([]);
 
@@ -27,17 +29,22 @@ function OwnedBooks({addBookState, setBookState}) {
   };
 
   useEffect(() => {
-    console.log('Add book state', addBookState)
-    if(ownedBookData.length === 0 || addBookState){
-      fetch(ownedBooksURL)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setOwnedData(data);
-        setBookState(false)
-      });
+    const cookies = cookie.parse(document.cookie);
+    if (ownedBookData.length === 0 || addBookState) {
+      fetch(ownedBooksURL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${cookies.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setOwnedData(data);
+          setBookState(false);
+        });
     }
-    }, [addBookState]);
+  }, [addBookState]);
 
   return (
     <section className={classes.ownedFindBookContainer}>
@@ -59,7 +66,13 @@ function OwnedBooks({addBookState, setBookState}) {
             books.book_title.toLowerCase().startsWith(search.toLowerCase())
           )
           .map((book) => {
-            return <UserBookCard key={book.ownedbook_id} book={book} setBookState={setBookState}/>;
+            return (
+              <UserBookCard
+                key={book.ownedbook_id}
+                book={book}
+                setBookState={setBookState}
+              />
+            );
           })}
       </div>
     </section>
