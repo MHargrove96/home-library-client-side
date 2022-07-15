@@ -30,35 +30,31 @@ function UserHome() {
   };
 
   return (
-    <main className={classes.mainBox}>
-      <section className={classes.findBookContainer}>
-        <h1 className={classes.homeMainText}>
+    <div className={classes.pageContainer}>
+      <section className={classes.findBookText}>
+        <h1 className={classes.homeTitle}>
           A room without books is like <br /> a body without a soul.
         </h1>
-
-        <div className={classes.h1TextContainer}>
-          <h2 className={classes.homeSearchText}>Find a book</h2>
-          <div className="search">
-            <input
-              className={classes.searchInput}
-              type="text"
-              placeholder="Search a Title."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              onKeyPress={searchBook}
-            />
-          </div>
-        </div>
-
+        <h2 className={classes.homeSearchText}>Find a book</h2>
+          <input
+            className={classes.searchInput}
+            type="text"
+            placeholder="Search a Title."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyPress={searchBook}
+          />
+      <section className={classes.findBookResults}>
         <div className={classes.cardContainer}>
           {bookData.map((book) => {
             return <Card key={book.id} book={book} setBookState={setAddBook} />;
           })}
         </div>
       </section>
+      </section>
       <OwnedBooks addBookState={addBook} setBookState={setAddBook} />
       {/* if condition that will switch between the ownedbooks component and the wishlist component */}
-    </main>
+    </div>
   );
 }
 

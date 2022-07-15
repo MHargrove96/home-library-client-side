@@ -1,33 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
-.mainBox{
-    background-color: black;
+.pageContainer{
     display: flex;
-    
     margin: 0%;
     padding: 0%;
+    top: 0px;
+    height: 100vh;
+    width: 100%;
 }
 
-.findBookContainer{
-    max-width: 50%;
-    min-height: 100vh;
-    margin-left: 160px;
-    padding: 0;
+.findBookText{
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    width: 50%;
+    padding: 0;
     align-items: center;
     text-align: center;
 }
 
-.homeMainText{
+.search{
+
+}
+
+.findBookResults{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.home.homeTitle{
     font-family: 'Berkshire Swash', cursive !important;
     text-shadow: 1px 2px black;
+    width: max-content;
     text-decoration: none;
     color: whitesmoke;
     font-size: 38px;
     text-align: center;
     padding: 10px;
     margin: 5px;
+    
 }
 
 .h1TextContainer{

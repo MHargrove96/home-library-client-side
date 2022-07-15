@@ -26,7 +26,7 @@ function App() {
         <nav className="App-header">
           <HeaderNavBar state={user} setState={setUser}/>
         </nav>
-        <main>
+        <main className="App-page">
           <Router state={user} setState={setUser}/>
         </main>
       </div>

@@ -46,7 +46,7 @@ function OwnedBooks({ addBookState, setBookState }) {
 
   return (
     <section className={classes.ownedFindBookContainer}>
-      <div className="search">
+      <div className={classes.search}>
         <h1 className={classes.ownedH1Text}>This is my library!</h1>
         <h2 className={classes.ownedSearchText}>Find a book</h2>
         <input

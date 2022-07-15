@@ -84,13 +84,17 @@ function UserSignUp({ setState }) {
         onChange={handleChange}
         fullWidth
       />
-      <TextField
-        className={classes.birthDateTf}
-        type="date"
-        value={body.birthDate}
-        name={"birthDate"}
-        onChange={handleChange}
-      />
+        <TextField
+          className={classes.emailTf}
+          required
+          type="email"
+          label="email"
+          variant="standard"
+          value={body.email}
+          name={"email"}
+          onChange={handleChange}
+          fullWidth
+        />
       <TextField
         className={classes.userNameTf}
         required
@@ -113,15 +117,11 @@ function UserSignUp({ setState }) {
         fullWidth
       />
       <TextField
-        className={classes.emailTf}
-        required
-        type="email"
-        label="email"
-        variant="standard"
-        value={body.email}
-        name={"email"}
+        className={classes.birthDateTf}
+        type="date"
+        value={body.birthDate}
+        name={"birthDate"}
         onChange={handleChange}
-        fullWidth
       />
       <Button
         type="submit"

@@ -23,14 +23,17 @@ export default function HeaderNavBar({ state, setState }) {
         </button>
       )}
       {state === false && (
-        <Link to={"/login"}>
-          <button className={classes.loginBtn}>Login</button>
-        </Link>
+        <span className={classes.btnBox}>
+          <Link to="/">
+            <button className={classes.homeBtn}>Home</button>
+          </Link>
+          <Link to={"/login"}>
+            <button className={classes.loginBtn}>Login</button>
+          </Link>
+        </span>
       )}
-      {/* <Link to='/'>
-      <button className={classes.homeBtn} >Home</button>
-      </Link>
-      <br /> */}
+
+      <br />
       {/* <Link to={'/wishlist'}>
       <button className={classes.wishListBtn} >Wish list</button>
       </Link> */}

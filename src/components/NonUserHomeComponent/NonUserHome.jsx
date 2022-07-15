@@ -18,17 +18,6 @@ function NonUserHome({ setState }) {
 
   return (
     <div className={classes.pageContainer}>
-      <section className={classes.BookListSec}>
-        <ul className={classes.ul}>
-          {books.map((book) => (
-            <li key={book.book_id} className={classes.list}>
-              <p className={classes.listItem}>Title: {book.title}</p>
-              <p className={classes.listItem}>Summary: {book.summary}</p>
-              <p className={classes.listItem}>Authored by {book.author}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
       <section className={classes.infoContainer}>
         <h1 className={classes.infoTitle}>
           Welcome to your own personal Book Nook.

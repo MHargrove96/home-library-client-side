@@ -2,27 +2,37 @@
 
 
 .appBar{
-    background-color: #521705 !important;
-    background-image: url("https://www.transparenttextures.com/patterns/large-leather.png");
+    position: sticky;
     height: 100%;
-    width: 160px;
-    position: fixed;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    border-top: 3px inset black;
+    border-bottom: 3px inset black;
     z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    
 }
 
 .navBarTitle{
     font-family: 'Berkshire Swash', cursive !important;
-    text-shadow: 2px 3px black;
+    text-shadow: 2px 3px silver;
     text-decoration: none;
-    color: azure;
+    color: black;
     font-size: 34px;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     margin: 5px;
+}
+
+.btnBox{
+    margin: 3px;
+}
+
+.logOutBtn{
+    margin: 3px;
+}
+
+.loginBtn{
 
 }
 
@@ -32,7 +42,7 @@
     text-decoration: none;
 }
 
-.signUpBtn{
+/*.signUpBtn{
     width: fit-content; 
     justify-items: end;
     text-decoration: none;
@@ -42,4 +52,4 @@
     width: fit-content; 
     justify-items: end;
     text-decoration: none;
-}
+} */
