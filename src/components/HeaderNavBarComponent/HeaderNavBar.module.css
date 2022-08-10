@@ -3,8 +3,9 @@
 
 .appBar{
     position: sticky;
+    top: 10px;
     height: 100%;
-    width: 400px;
+    width: 500px;
     margin: 0 auto;
     margin-top: 10px;
     text-align: center;
@@ -25,15 +26,15 @@
 }
 
 .btnBox{
-    margin: 3px;
+    margin: 5px;
 }
 
 .logOutBtn{
-    margin: 3px;
+    margin: 5px;
 }
 
 .loginBtn{
-
+    margin: 5px;
 }
 
 .homeBtn{

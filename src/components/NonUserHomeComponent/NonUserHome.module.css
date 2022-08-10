@@ -3,9 +3,15 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   height: 100vh;
-  background-color: #c2a685;
-  background-image: url("https://www.transparenttextures.com/patterns/white-brushed.png");
+}
 
+.heroImg{
+  max-width: 500px;
+  margin: 0 auto;
+  border: 20px ridge transparent;
+  background-color: #573700;
+  border-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png") 30 stretch ;
+  /* border-image: url("https://www.transparenttextures.com/patterns/purty-wood.png") 30 stretch ; */
 }
 
 .infoContainer{
@@ -16,7 +22,6 @@
 
 .infoTitle{
   text-decoration: underline 2px black;
-  color: black;
 }
 
 .infoContainer{
